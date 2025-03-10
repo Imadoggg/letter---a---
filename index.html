@@ -27,12 +27,16 @@
             align-items: center;
             justify-content: center;
             gap: 30px;
+            width: 100%;
+            max-width: 500px;
+            padding: 0 20px;
         }
         
         .envelope-container {
             position: relative;
             height: 220px;
-            width: 300px;
+            width: 100%;
+            max-width: 300px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -42,6 +46,7 @@
             position: absolute;
             height: 180px;
             width: 280px;
+            max-width: 100%;
             background-color: #ffb3b9;
             border-radius: 10px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
@@ -100,6 +105,7 @@
             align-items: center;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             overflow: hidden;
+            padding: 15px;
         }
         
         .envelope.open .letter {
@@ -107,7 +113,7 @@
         }
         
         .message {
-            font-size: 6px;
+            font-size: 18px;
             color: #ff4d63;
             font-weight: 600;
             opacity: 0;
@@ -137,13 +143,13 @@
         
         .heart-1 {
             right: 80px;
-            top: 40px;
+            top: 0px;
             transition-delay: 0.3s;
         }
         
         .heart-2 {
             right: 50px;
-            top: -50px;
+            top: -25px;
             transition-delay: 0.4s;
         }
         
@@ -158,18 +164,19 @@
         
         .heart-svg {
             fill: #ff4d63;
-            width: 35px;
-            height: 35px;
-        }
-        
-        .heart-1 .heart-svg {
             width: 25px;
             height: 25px;
         }
         
+        .heart-1 .heart-svg {
+            width: 20px;
+            height: 20px;
+        }
+        
         .btn-container {
             display: flex;
-            gap: 150px;
+            justify-content: center;
+            width: 100%;
         }
         
         .btn {
@@ -187,6 +194,7 @@
             position: relative;
             overflow: hidden;
             outline: none;
+            width: 120px;
         }
         
         .btn:after {
@@ -212,13 +220,58 @@
         }
         
         @media (max-width: 500px) {
+            .envelope-container {
+                height: 180px;
+            }
+            
             .envelope {
                 height: 150px;
                 width: 240px;
             }
             
             .message {
-                font-size: 32px;
+                font-size: 14px;
+            }
+            
+            .letter {
+                padding: 10px;
+            }
+            
+            .heart-svg {
+                width: 20px;
+                height: 20px;
+            }
+            
+            .heart-1 .heart-svg {
+                width: 15px;
+                height: 15px;
+            }
+            
+            .heart-1 {
+                right: 70px;
+                top: 5px;
+            }
+            
+            .heart-2 {
+                right: 40px;
+                top: -15px;
+            }
+            
+            .btn {
+                padding: 8px 20px;
+                font-size: 12px;
+                width: 100px;
+            }
+        }
+        
+        @media (max-width: 350px) {
+            .envelope {
+                height: 130px;
+                width: 200px;
+            }
+            
+            .message {
+                font-size: 12px;
             }
         }
     </style>
@@ -251,14 +304,9 @@
     <script>
         const envelope = document.querySelector('.envelope');
         const openBtn = document.getElementById('open-btn');
-        const resetBtn = document.getElementById('reset-btn');
         
         openBtn.addEventListener('click', () => {
             envelope.classList.add('open');
-        });
-        
-        resetBtn.addEventListener('click', () => {
-            envelope.classList.remove('open');
         });
         
         envelope.addEventListener('click', () => {
